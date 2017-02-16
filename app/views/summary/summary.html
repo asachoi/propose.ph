@@ -1,0 +1,52 @@
+<section class="panelz panelz--withTabs">
+    <div class="scrollable scrollable--vertical">
+        <form name="riderForm" ng-keyup="" ng-mouseup="">
+
+            <customer-section data="baseObj.customers.insured"></customer-section>
+            <product-section data="baseObj.product"></product-section>
+            <div class="content padded">
+                <h2 class="mainTitle">{{'summary' | translate}}</h2>
+                <md-table-container>
+                    <table md-table md-row-select multiple>
+                        <thead md-head>
+                            <tr md-row>
+                                <th md-column>Coverage</th>
+                                <th md-column>Description</th>
+                                <th md-column>Face Amount</th>
+
+                                <th md-column>Annual</th>
+                                <th md-column>Semi-annual</th>
+                                <th md-column>Quarterly</th>
+                                <th md-column>Monthly</th>
+
+                            </tr>
+                        </thead>
+                        <tbody md-body>
+                            <tr md-row md-select-id="name" md-auto-select>
+                                <td md-cell>{{baseObj.product.plan.key}}</td>
+                                <td md-cell>{{baseObj.product.plan.value}}</td>
+                                <td md-cell md-numeric>{{baseObj.product.faceamount | currency}}</td>
+                                <td md-cell md-numeric>{{baseObj.baseplan.premium.annual | currency}}</td>
+                                <td md-cell md-numeric>{{baseObj.baseplan.premium.semiannual | currency}}</td>
+                                <td md-cell md-numeric>{{baseObj.baseplan.premium.quarterly | currency}}</td>
+                                <td md-cell md-numeric>{{baseObj.baseplan.premium.monthly | currency}}</td>
+                            </tr>
+
+                            <tr md-row md-select-id="name" md-auto-select ng-repeat="(k,r) in baseObj.product.riders" ng-if="r.selected" ng-init="schema=summaryCtrl.getRiderSchema(k)">
+                                <td md-cell >{{schema.ridername}}</td>
+                                <td md-cell>{{schema.term}}</td>
+                                <td md-cell md-numeric>{{r.faceamount | currency}}</td>
+                                <td md-cell> </td>
+                                <td md-cell> </td>
+                                <td md-cell> </td>
+                                <td md-cell> </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </md-table-container>
+            </div>
+            <debug data="baseObj.product.riders" />
+        </form>
+    </div>
+</section>

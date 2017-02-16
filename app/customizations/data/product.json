@@ -1,0 +1,22 @@
+{
+    "productgroups": [
+        {
+            "productgroupname": "Enrich Max",
+            "products": [
+                "SPUL"
+            ]
+        }
+    ],
+    "products": [
+        {
+            "productcode": "SPUL",
+            "customform": "SPUL",
+            "plans": [
+                "US789",
+                "US889",
+                "UD799",
+                "US889"
+            ]
+        }
+    ]
+}
